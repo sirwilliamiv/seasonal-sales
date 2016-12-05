@@ -23,29 +23,22 @@ categoryRequest.addEventListener("load", listingCategories );
 categoryRequest.open("GET", "categories.json");
 categoryRequest.send();
 
-
+var listDepartments;
 
 function listingCategories(e) {
   var cdata = JSON.parse(e.target.responseText)
 
 
-  // do this with the data
-  // cdata.categories
-// [Object, Object, Object]
-// cdata.categories.2
-// VM625:1 Uncaught SyntaxError: Unexpected number
-// cdata.categories[2]
-// Object {id: 3, name: "Household", season_discount: "Spring", discount: 0.15}
-// cdata.categories[2].name
-// "Household"
-  for (var i = 0; i < cdata.categories.length; i++) {
-      var listDepartments = [i].[1];
-        console.log(listDepartments)
 
- // listDepartments+= `<h1 class="DepartmentName">${[i].1}</h1>`
+  for (var i = 0; i < cdata.categories.length; i++) {
+      // var listDepartments+= i[1];
+        // console.log(cdata.categories[i].name)
+
+  listDepartments += `<h1 class="DepartmentName">${cdata.categories[i].name}</h1>`
+  document.getElementById('putDNamesHere').innerHTML = listDepartments
 
  }
-  // console.log(cdata)
+
 }
 
 var producstRequest = new XMLHttpRequest();
