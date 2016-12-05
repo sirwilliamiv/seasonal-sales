@@ -9,7 +9,11 @@
     //  <li>${product name} + ${price}</li>
     //</ul>
 //}
+//for (var i = 0; i < categories.length; i++) {
+//  var listDepartments;
+//  listDepartments+= `<h1 classe="DepartmentName">${[i].name}</h1>`
 //
+//  }
 //
 //create 2 XMHRequests  - 4 steps each
 //
@@ -23,9 +27,25 @@ categoryRequest.send();
 
 function listingCategories(e) {
   var cdata = JSON.parse(e.target.responseText)
+
+
   // do this with the data
-  //
-  console.log(cdata)
+  // cdata.categories
+// [Object, Object, Object]
+// cdata.categories.2
+// VM625:1 Uncaught SyntaxError: Unexpected number
+// cdata.categories[2]
+// Object {id: 3, name: "Household", season_discount: "Spring", discount: 0.15}
+// cdata.categories[2].name
+// "Household"
+  for (var i = 0; i < cdata.categories.length; i++) {
+      var listDepartments = [i].[1];
+        console.log(listDepartments)
+
+ // listDepartments+= `<h1 class="DepartmentName">${[i].1}</h1>`
+
+ }
+  // console.log(cdata)
 }
 
 var producstRequest = new XMLHttpRequest();
