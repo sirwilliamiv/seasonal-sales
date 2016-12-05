@@ -24,9 +24,9 @@ producstRequest.send();
 
 
 
-var listDepartments;
+var listDepartments="";
 var inputDepartments;
-var listProducts;
+var listProducts="";
 var Apparel = 1;
 var Furniture = 2;
 var Household = 3;
@@ -46,9 +46,9 @@ function listingCategories(e) {
       // select menu
   inputDepartments+=  `<option value="value$">${cdata.categories[i].season_discount}</option>`
   // add department names to h1
-  listDepartments += `<h1 class="DepartmentName">${cdata.categories[i].name}</h1>`
-  document.getElementById('putDNamesHere').innerHTML = listDepartments
-  document.getElementById('seasonSales').innerHTML = inputDepartments
+  // listDepartments += `<h1 class="DepartmentName">${cdata.categories[i].name}</h1>`
+  // document.getElementById('putDNamesHere').innerHTML = listDepartments
+  // document.getElementById('seasonSales').innerHTML = inputDepartments
 
   }
 
@@ -63,6 +63,7 @@ function listingCategories(e) {
 function producstList (e) {
   var pdata = JSON.parse(e.target.responseText)
     // loop through products
+
      for (var i = 0; i < pdata.products.length; i++) {
 // add products to div
         listProducts += `<div class="productName">${pdata.products[i].name}</div>
@@ -75,11 +76,8 @@ function producstList (e) {
 
 
 
-// function seasonalSaleSelect(){
-//   for
 
-
-// }
+// ------------------ASSIGNING DEPARTMENT NAME TO ID #-----------------------
 //
 // loop through product id
 // if the category id  === product "category_id "{then do stuff}
