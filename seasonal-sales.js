@@ -1,19 +1,9 @@
 // Your job is to
 // build a web page that lists all of the products, the name of the department it's
 //in, and the price.
-//
-//
-//function listProductsInDepartment {
-    //'<h1>${name of department}</h1>
-    //<ul>
-    //  <li>${product name} + ${price}</li>
-    //</ul>
-//}
-//for (var i = 0; i < categories.length; i++) {
-//  var listDepartments;
-//  listDepartments+= `<h1 classe="DepartmentName">${[i].name}</h1>`
-//
-//  }
+
+
+
 //
 //create 2 XMHRequests  - 4 steps each
 //
@@ -37,6 +27,10 @@ producstRequest.send();
 var listDepartments;
 var inputDepartments;
 var listProducts;
+var Apparel = 1;
+var Furniture = 2;
+var Household = 3;
+
 
 
 
@@ -49,14 +43,14 @@ function listingCategories(e) {
 
 // ------------loop to add department names to h1-----------
   for (var i = 0; i < cdata.categories.length; i++) {
-      // var listDepartments+= i[1];
-        // console.log(cdata.categories[i].name)
+      // select menu
   inputDepartments+=  `<option value="value$">${cdata.categories[i].season_discount}</option>`
+  // add department names to h1
   listDepartments += `<h1 class="DepartmentName">${cdata.categories[i].name}</h1>`
   document.getElementById('putDNamesHere').innerHTML = listDepartments
   document.getElementById('seasonSales').innerHTML = inputDepartments
 
- }
+  }
 
 }
 
@@ -70,9 +64,10 @@ function producstList (e) {
   var pdata = JSON.parse(e.target.responseText)
     // loop through products
      for (var i = 0; i < pdata.products.length; i++) {
-
+// add products to div
         listProducts += `<div class="productName">${pdata.products[i].name}</div>
-                      <div class="productPrice">${pdata.products[i].price}</div>`
+                      <div class="productPrice">${pdata.products[i].price}</div>
+                      <div class="dnameForProduct">${pdata.products[i].category_id}</div>`
         document.getElementById('listProductsHere').innerHTML = listProducts
     }
 
@@ -85,7 +80,11 @@ function producstList (e) {
 
 
 // }
-
+//
+// loop through product id
+// if the category id  === product "category_id "{then do stuff}
+//
+//
 
 
 //
