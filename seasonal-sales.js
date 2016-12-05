@@ -17,30 +17,15 @@
 //
 //create 2 XMHRequests  - 4 steps each
 //
-
+// go go gadget department names---------------
 var categoryRequest = new XMLHttpRequest();
 categoryRequest.addEventListener("load", listingCategories );
 categoryRequest.open("GET", "categories.json");
 categoryRequest.send();
 
-var listDepartments;
-
-function listingCategories(e) {
-  var cdata = JSON.parse(e.target.responseText)
 
 
-
-  for (var i = 0; i < cdata.categories.length; i++) {
-      // var listDepartments+= i[1];
-        // console.log(cdata.categories[i].name)
-
-  listDepartments += `<h1 class="DepartmentName">${cdata.categories[i].name}</h1>`
-  document.getElementById('putDNamesHere').innerHTML = listDepartments
-
- }
-
-}
-
+// gogo gadget products-------------------------
 var producstRequest = new XMLHttpRequest();
 producstRequest.addEventListener("load", producstList);
 producstRequest.open("GET", "products.json")
@@ -49,14 +34,57 @@ producstRequest.send();
 
 
 
-function producstList (e) {
-  var pdata = JSON.parse(e.target.responseText)
-  // do this with the data
-  //
-  console.log(pdata)
+var listDepartments;
+var inputDepartments;
+var listProducts;
+
+
+
+
+
+
+function listingCategories(e) {
+  var cdata = JSON.parse(e.target.responseText)
+
+
+// ------------loop to add department names to h1-----------
+  for (var i = 0; i < cdata.categories.length; i++) {
+      // var listDepartments+= i[1];
+        // console.log(cdata.categories[i].name)
+  inputDepartments+=  `<option value="value$">${cdata.categories[i].season_discount}</option>`
+  listDepartments += `<h1 class="DepartmentName">${cdata.categories[i].name}</h1>`
+  document.getElementById('putDNamesHere').innerHTML = listDepartments
+  document.getElementById('seasonSales').innerHTML = inputDepartments
+
+ }
+
 }
 
 
+
+// need a sorting function(name, price, department) {
+//
+
+
+function producstList (e) {
+  var pdata = JSON.parse(e.target.responseText)
+    // loop through products
+     for (var i = 0; i < pdata.products.length; i++) {
+
+        listProducts += `<div class="productName">${pdata.products[i].name}</div>
+                      <div class="productPrice">${pdata.products[i].price}</div>`
+        document.getElementById('listProductsHere').innerHTML = listProducts
+    }
+
+  }
+
+
+
+// function seasonalSaleSelect(){
+//   for
+
+
+// }
 
 
 
