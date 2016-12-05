@@ -22,10 +22,25 @@ categoryRequest.send();
 
 
 function listingCategories(e) {
-  var data = JSON.parse(e.target.responseText)
+  var cdata = JSON.parse(e.target.responseText)
   // do this with the data
   //
-  console.log(data)
+  console.log(cdata)
+}
+
+var producstRequest = new XMLHttpRequest();
+producstRequest.addEventListener("load", producstList);
+producstRequest.open("GET", "products.json")
+producstRequest.send();
+
+
+
+
+function producstList (e) {
+  var pdata = JSON.parse(e.target.responseText)
+  // do this with the data
+  //
+  console.log(pdata)
 }
 
 
