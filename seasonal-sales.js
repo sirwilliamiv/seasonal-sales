@@ -11,18 +11,27 @@
 //}
 //
 //
+//create 2 XMHRequests  - 4 steps each
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+var categoryRequest = new XMLHttpRequest();
+categoryRequest.addEventListener("load", listingCategories );
+categoryRequest.open("GET", "categories.json");
+categoryRequest.send();
+
+
+
+function listingCategories(e) {
+  var data = JSON.parse(e.target.responseText)
+  // do this with the data
+  //
+  console.log(data)
+}
+
+
+
+
+
 //
 //
 //
