@@ -53,9 +53,11 @@ function listingCategories(e) {
   // add department names to h1
   // listDepartments += `<h1 class="DepartmentName">${cdata.categories[i].name}</h1>`
   // document.getElementById('putDNamesHere').innerHTML = listDepartments
-  document.getElementById('seasonSales').innerHTML = inputDepartments
+
 
   }
+
+   document.getElementById('seasonSales').innerHTML = inputDepartments
 
 }
 
@@ -78,7 +80,6 @@ function producstList (e) {
                       } else if (pdata.products[i].category_id === 2) {pdata.products[i].category_id = furniture}
                     else {
                     pdata.products[i].category_id = household
-                    console.log(pdata.products[i].category_id)
               }
 
 // add products to div
