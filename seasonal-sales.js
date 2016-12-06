@@ -25,30 +25,35 @@ producstRequest.send();
 
 
 var listDepartments="";
-var inputDepartments;
+var inputDepartments="";
 var listProducts="";
-var Apparel = 1;
-var Furniture = 2;
-var Household = 3;
+// var Apparel = 1;
+// var Furniture = 2;
+// var Household = 3;
 
-
-
+  var cdata;
+  var pdata;
+  var whatIsGoingOn ="";
+  var apparel = "Apparel";
+  var household = "Household";
+  var furniture = "Furniture";
 
 
 
 
 function listingCategories(e) {
-  var cdata = JSON.parse(e.target.responseText)
+  cdata = JSON.parse(e.target.responseText)
 
 
 // ------------loop to add department names to h1-----------
   for (var i = 0; i < cdata.categories.length; i++) {
+        // if(cdata.categories.id === )
       // select menu
   inputDepartments+=  `<option value="value$">${cdata.categories[i].season_discount}</option>`
   // add department names to h1
   // listDepartments += `<h1 class="DepartmentName">${cdata.categories[i].name}</h1>`
   // document.getElementById('putDNamesHere').innerHTML = listDepartments
-  // document.getElementById('seasonSales').innerHTML = inputDepartments
+  document.getElementById('seasonSales').innerHTML = inputDepartments
 
   }
 
@@ -61,18 +66,42 @@ function listingCategories(e) {
 
 
 function producstList (e) {
-  var pdata = JSON.parse(e.target.responseText)
+   pdata = JSON.parse(e.target.responseText)
     // loop through products
 
+
+
      for (var i = 0; i < pdata.products.length; i++) {
+
+                  if(pdata.products[i].category_id === 1) {
+                    pdata.products[i].category_id = apparel;
+                      } else if (pdata.products[i].category_id === 2) {pdata.products[i].category_id = furniture}
+                    else {
+                    pdata.products[i].category_id = household
+                    console.log(pdata.products[i].category_id)
+              }
+
 // add products to div
-        listProducts += `<div class="productName">${pdata.products[i].name}</div>
-                      <div class="productPrice">${pdata.products[i].price}</div>
-                      <div class="dnameForProduct">${pdata.products[i].category_id}</div>`
-        document.getElementById('listProductsHere').innerHTML = listProducts
+        listProducts += `<li class="productName">${pdata.products[i].name}</li>
+                      <li class="productPrice">${pdata.products[i].price}</li>
+                        <li class="dnameForProduct">${pdata.products[i].category_id}</li>`
+
+
+
+
     }
+      document.getElementById('listProductsHere').innerHTML = listProducts
 
   }
+
+
+
+
+   // if(pdata.products[i].category_id === cdata.categories.id){
+   //                          var bingo = pdata.catagories.name
+   //                          console.log(cdata)
+
+   //                        }
 
 
 
@@ -82,7 +111,7 @@ function producstList (e) {
 // loop through product id
 // if the category id  === product "category_id "{then do stuff}
 //
-//
+// for(var i = 0; i < )
 
 
 //
