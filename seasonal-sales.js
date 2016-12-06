@@ -61,23 +61,32 @@ function listingCategories(e) {
 
 }
 
+// create discounts to be happening
+document.getElementById("seasonSales").addEventListener('click', function(e){
+pdata.categories[0].price = pdata.categories[0].price -  (cdata.categories[0].discount *  pdata.categories[0].price)
+
+})
+
+document.getElementById("").innerHTML = pdatacategories[0].price
+
 
 
 // need a sorting function(name, price, department) {
 //
-
-
-function producstList (e) {
-   pdata = JSON.parse(e.target.responseText)
-    // loop through products
-
-
-
-     for (var i = 0; i < pdata.products.length; i++) {
+function fillTheDom(pdata) {
+   for (var i = 0; i < pdata.products.length; i++) {
 
                   if(pdata.products[i].category_id === 1) {
                     pdata.products[i].category_id = apparel;
-                      } else if (pdata.products[i].category_id === 2) {pdata.products[i].category_id = furniture}
+                      }
+
+
+                      else if (pdata.products[i].category_id === 2) {
+
+                        pdata.products[i].category_id = furniture
+
+
+                      }
                     else {
                     pdata.products[i].category_id = household
               }
@@ -92,6 +101,13 @@ function producstList (e) {
 
     }
       document.getElementById('listProductsHere').innerHTML = listProducts
+}
+
+
+function producstList (e) {
+   pdata = JSON.parse(e.target.responseText)
+    // loop through products
+    fillTheDom(pdata)
 
   }
 
